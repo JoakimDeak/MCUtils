@@ -32,7 +32,8 @@
                 mat2 -= recipeMat2;
             }
             // stop when there is no leftover material
-        } while (mat1 !== 0 && mat2 !== 0);
+        } while (mat1 !== 0 || mat2 !== 0);
+        console.log("Mat1 amount: " + addedMat1 + ". Mat2 amount: " + addedMat2);
     }
 </script>
 
