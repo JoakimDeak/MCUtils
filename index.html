@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MCUtils</title>
 </head>
 <body>
 <h1>Smeltery Ratio</h1>
-<p>calc(required amount of material 1 for alloy, minimum amount of material 1, required amount of material 2 for alloy, minimum amount of material 2)</p>
-<p>steel example: calc(16, 100, 9, 144);</p>
+<p>ratio(required amount of material 1 for alloy, minimum amount of material 1, required amount of material 2 for alloy, minimum amount of material 2)</p>
+<p>steel example: ratio(16, 100, 9, 144);</p>
+<h1>Stacks</h1>
+<p>stacks(number of items)</p>
+<p>Returns how many full stacks of 64 and any remainder</p>
 <script>
     // recipeMat1&2 is how much of each material is required for alloying
     // minVal1&2 is the smallest amount of each material you can add
-    function calc(recipeMat1, minVal1, recipeMat2, minVal2) {
+    function ratio(recipeMat1, minVal1, recipeMat2, minVal2) {
         let mat1 = 0;
         let mat2 = 0;
         let addedMat1 = 0;
@@ -34,6 +37,17 @@
             // stop when there is no leftover material
         } while (mat1 !== 0 || mat2 !== 0);
         console.log("Mat1 amount: " + addedMat1 + ". Mat2 amount: " + addedMat2);
+    }
+
+    function stacks(x){
+        let stacks = Math.floor(x / 64);
+        let items = x - (stacks * 64);
+
+        let suffix = "";
+        if(stacks > 1){
+            suffix = "s";
+        }
+        console.log(stacks + " stack" + suffix + " and " + items);
     }
 </script>
 
