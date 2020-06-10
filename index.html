@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Smeltery Ratio</h1>
+<p>calc(required amount of material 1 for alloy, minimum amount of material 1, required amount of material 2 for alloy, minimum amount of material 2)</p>
+<p>steel example: calc(16, 100, 9, 144);</p>
+<script>
+    // recipeMat1&2 is how much of each material is required for alloying
+    // minVal1&2 is the smallest amount of each material you can add
+    function calc(recipeMat1, minVal1, recipeMat2, minVal2) {
+        let mat1 = 0;
+        let mat2 = 0;
+        let addedMat1 = 0;
+        let addedMat2 = 0;
+        do {
+            // add more materials
+            if (mat1 < recipeMat1) {
+                mat1 += minVal1;
+                addedMat1++;
+            }
+            if (mat2 < recipeMat2) {
+                mat2 += minVal2;
+                addedMat2++;
+            }
+            // do the alloying
+            while (mat1 >= recipeMat1 && mat2 >= recipeMat2) {
+                mat1 -= recipeMat1;
+                mat2 -= recipeMat2;
+            }
+            // stop when there is no leftover material
+        } while (mat1 !== 0 && mat2 !== 0);
+    }
+</script>
+
+</body>
+</html>
